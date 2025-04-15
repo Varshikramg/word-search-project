@@ -1,0 +1,538 @@
+/* src/components/VersusMode.css */
+
+.versus-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* Updated theme to match the second image */
+  .game-controls.updated-theme {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #f2f5fb; /* Lighter blue background */
+    padding: 0.75rem;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #e6e9f0;
+  }
+  
+  .updated-theme .level-badge, 
+  .updated-theme .timer {
+    padding: 0.5rem 0.75rem;
+    background-color: transparent;
+    color: #4364d7; /* Blue for text instead of white */
+    border-radius: 0;
+    font-weight: bold;
+    box-shadow: none;
+  }
+  
+  .updated-theme .timer {
+    color: #4364d7; /* Using blue instead of accent color */
+  }
+  
+  .updated-theme .pause-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #ffc107; /* Yellow/orange for pause button */
+    color: #333;
+  }
+  
+  .updated-theme .pause-button.paused {
+    background-color: #ffc107; /* Keep consistency */
+  }
+  
+  .updated-theme .reset-button {
+    background-color: #f05252; /* Red color for reset */
+    color: white;
+    border-radius: 4px;
+  }
+  
+  .game-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .control-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .pause-button, .reset-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .difficulty-selector, .theme-selector {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .difficulty-btn, .theme-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .difficulty-btn.active, .theme-btn.active {
+    background-color: #4364d7; /* Blue color */
+    color: white;
+    border-color: #4364d7;
+  }
+  
+  .difficulty-btn:disabled, .theme-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .scores-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .player-score, .computer-score {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .player-score {
+    background-color: #e9f5ff;
+    margin-right: 0.5rem;
+  }
+  
+  .computer-score {
+    background-color: #fff1e9;
+    margin-left: 0.5rem;
+  }
+  
+  .player-score h3, .computer-score h3 {
+    margin-top: 0;
+    color: #4364d7; /* Updated blue color */
+  }
+  
+  .computer-score h3 {
+    color: #ff9e00; /* Orange for computer */
+  }
+  
+  .thinking, .searching {
+    font-style: italic;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  
+  .searching {
+    color: #ff9800;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+  }
+  
+  .words-to-find {
+    background-color: #f8f8f8;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .words-to-find h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .word-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .word-chip {
+    padding: 0.25rem 0.75rem;
+    background-color: #ff9800; /* Orange background for words to find */
+    border-radius: 16px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    color: white;
+  }
+  
+  .word-chip.found-user {
+    background-color: #4364d7; /* Blue for user found words */
+    color: white;
+  }
+  
+  .word-chip.found-computer {
+    background-color: #ff9e00; /* Orange for computer found words */
+    color: white;
+  }
+  
+  .word-lists-container {
+    display: flex;
+    flex-direction: row; /* Ensure side-by-side layout */
+    margin-bottom: 1rem;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .word-list {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 45%; /* Ensure minimum width */
+  }
+  
+  .player-words {
+    background-color: #e9f5ff;
+  }
+  
+  .computer-words {
+    background-color: #fff1e9;
+  }
+  
+  .word-list h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .word-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .word-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .word-list li.found {
+    text-decoration: line-through;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .versus-grids-container {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .player-grid-container, .computer-grid-container {
+    flex: 1;
+  }
+  
+  .grid-title {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #4364d7; /* Updated blue color */
+  }
+  
+  .word-grid-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .word-grid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+  
+  .easy-grid {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
+  
+  .medium-grid {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+  
+  .hard-grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+  
+  .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .cell.selected {
+    background-color: #FF9800;
+    color: white;
+    z-index: 1;
+  }
+  
+  .cell.found {
+    background-color: #4CAF50; /* Green for found words */
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cell.searching {
+    background-color: #FF9800;
+    color: white;
+    animation: searchPulse 0.6s infinite alternate;
+  }
+  
+  @keyframes searchPulse {
+    from { background-color: #FF9800; }
+    to { background-color: #FFB74D; }
+  }
+  
+  .cell.start {
+    border-radius: 50% 0 0 50%;
+  }
+  
+  .cell.end {
+    border-radius: 0 50% 50% 0;
+  }
+  
+  .pause-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    backdrop-filter: blur(3px);
+  }
+  
+  .pause-overlay h3, .pause-overlay p {
+    color: white;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+  
+  .completion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+  }
+  
+  .game-over-modal {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  
+  .game-over-modal h2 {
+    margin-top: 0;
+    color: #4364d7; /* Updated blue color */
+  }
+  
+  .game-over-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .game-over-actions button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .game-over-actions button:first-child {
+    background-color: #4364d7; /* Updated blue color */
+    color: white;
+  }
+  
+  .game-over-actions button:last-child {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .versus-grids-container {
+      flex-direction: column;
+    }
+    
+    .scores-container {
+      flex-direction: column;
+    }
+    
+    .player-score, .computer-score {
+      margin: 0 0 1rem 0;
+    }
+    
+    /* Keep word lists side-by-side even on mobile */
+    .word-lists-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+    .word-list {
+      min-width: 100px;
+    }
+  }
+
+  /* Add these styles to your VersusMode.css file */
+
+.word-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+  }
+  
+  .word-list li.found {
+    font-weight: bold;
+    color: #4CAF50;
+    text-decoration: line-through;
+    position: relative;
+  }
+  
+  .word-list li.found::after {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    width: calc(100% + 10px);
+    height: 2px;
+    background-color: #4CAF50;
+    animation: strikethrough 0.3s ease-out forwards;
+    transform-origin: left;
+  }
+  
+  @keyframes strikethrough {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  
+  .player-words li.found {
+    color: #4364d7;
+  }
+  
+  .player-words li.found::after {
+    background-color: #4364d7;
+  }
+  
+  .computer-words li.found {
+    color: #ff9e00;
+  }
+  
+  .computer-words li.found::after {
+    background-color: #ff9e00;
+  }
+  
+  .word-list li.found, .word-list li.found-by-anyone {
+    text-decoration: line-through;
+    position: relative;
+  }
+  
+  .player-words li.found {
+    color: #4364d7; 
+  }
+  
+  .computer-words li.found {
+    color: #ff9e00;
+  }
+
+  /* Words found by the other player */
+.word-list li.found-by-other {
+    text-decoration: line-through;
+    color: #aaa;
+    position: relative;
+  }
+
+  .word-list li.found::after,
+  .word-list li.found-by-other::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    animation: strikethrough 0.3s ease-out forwards;
+    transform-origin: left;
+  }
+  
+  .player-words li.found-by-anyone:not(.found) {
+    text-decoration: line-through;
+    color: #999; /* Gray color for words found by the other player */
+  }
+  
+  .computer-words li.found-by-anyone:not(.found) {
+    text-decoration: line-through;
+    color: #999;
+  }
+  
+  .word-list li.found::after,
+  .word-list li.found-by-anyone::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    animation: strikethrough 0.3s ease-out forwards;
+    transform-origin: left;
+  }
+  
+  @keyframes strikethrough {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
